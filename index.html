@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>石部中学校 1991年卒業生 同窓会</title>
+    <meta name="description" content="石部中学校の懐かしい仲間たちが集まる同窓会のご案内サイトです。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Shippori+Mincho&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ログイン画面 -->
+    <div id="login-screen" class="screen active">
+        <div class="login-container glass-panel">
+            <h1 class="login-title">石部中学校 同窓会</h1>
+            <p class="login-subtitle">1991年卒業生の皆様へ</p>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="password">合い言葉</label>
+                    <input type="text" id="password" placeholder="合い言葉を入力" required>
+                </div>
+                <p id="login-error" class="error-message">合い言葉が間違っています。</p>
+                <button type="submit" class="btn primary-btn">入場する</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- メインコンテンツ (初期非表示) -->
+    <div id="main-content" class="screen hidden">
+        <!-- ヒーローセクション（キービジュアル） -->
+        <header class="hero">
+            <div class="hero-bg" style="background-image: url('assets/main_visual.png');"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">35年分の「久しぶり」を、<br>あの日のままの笑顔で。</h1>
+                <p class="hero-date">2026.8.14 FRI</p>
+                <p class="hero-subtitle">1991年卒 石部中学校 同窓会</p>
+                <p class="hero-participants">4/30時点の参加予定者：？？人</p>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="arrow-down"></div>
+            </div>
+        </header>
+
+        <main>
+            <!-- メッセージセクション -->
+            <section class="section message-section">
+                <div class="container">
+                    <h2 class="section-title">ご挨拶</h2>
+                    <div class="message-box">
+                        <p class="greeting-lead">1991年卒業から35年。<br>皆様、いかがお過ごしでしょうか。</p>
+                        <p>
+                            2年、3年の時に演劇で「北の国から」をやったこと。みんなで作り上げた空き缶アート。<br>
+                            一生懸命だったマスゲームの練習。そして、部活の練習で息を切らして駆け上がった坂ダッシュ。<br>
+                            あれから35年の月日が流れ、私たちも50代になりました。
+                        </p>
+                        <p>
+                            それぞれの道を歩んできた私たちが、もう一度あの頃に戻って語り合える場所を作りたい。<br>
+                            そんな思いから、この度同窓会を企画いたしました。
+                        </p>
+                        <p>
+                            懐かしい顔ぶれと再会し、素晴らしいひとときを共に過ごせることを心より楽しみにしています。
+                        </p>
+                        <p class="signature">2026年同窓会幹事 小野田文雄 幹事一同</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 開催概要セクション -->
+            <section class="section details-section">
+                <div class="container">
+                    <h2 class="section-title">開催概要</h2>
+                    
+                    <div class="event-card">
+                        <h3 class="event-title">同窓会（一次会）</h3>
+                        <dl class="event-details">
+                            <dt><span class="icon">📅</span>日時</dt>
+                            <dd class="large-text">
+                                <strong>2026年8月14日（金）</strong><br>
+                                <span class="time-details">11:30 受付開始 / 12:00 開会 / 14:30 閉会</span>
+                            </dd>
+
+                            <dt><span class="icon">💴</span>会費</dt>
+                            <dd class="large-text">
+                                <strong>10,000円</strong><span class="small-text">（当日現金支払い）</span>
+                            </dd>
+
+                            <dt><span class="icon">📍</span>場所</dt>
+                            <dd>
+                                <strong class="large-text">クサツエストピアホテル</strong><br>
+                                〒525-0037 滋賀県草津市西大路町4-32<br>
+                                <span class="small-text">（JR琵琶湖線 草津駅西口より徒歩3分）</span><br>
+                                <img src="assets/estpia.jpg" alt="クサツエストピアホテル" class="hotel-image">
+                                <div class="map-container">
+                                    <iframe src="https://maps.google.com/maps?q=クサツエストピアホテル&output=embed" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+
+                    <div class="event-card">
+                        <h3 class="event-title">2次会</h3>
+                        <dl class="event-details">
+                            <dt><span class="icon">📅</span>日時</dt>
+                            <dd class="large-text">
+                                <strong>同日 15:00 ～ 17:00</strong>
+                            </dd>
+                            
+                            <dt><span class="icon">💴</span>会費</dt>
+                            <dd class="large-text">
+                                <strong>2,000円</strong><span class="small-text">（当日現金支払い・軽食）＋ キャッシュオンデリバリー</span>
+                            </dd>
+
+                            <dt><span class="icon">📍</span>場所</dt>
+                            <dd>
+                                <strong class="large-text">カフェ＋バル フィオーレ</strong><br>
+                                滋賀県草津市大路1-15-39<br>
+                                <div class="map-container">
+                                    <iframe src="https://maps.google.com/maps?q=カフェ＋バル%20フィオーレ%20草津&output=embed" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 出欠確認セクション -->
+            <section class="section rsvp-section">
+                <div class="container">
+                    <div class="rsvp-box">
+                        <h2 class="section-title">出欠のご確認</h2>
+                        <p class="rsvp-desc">
+                            人数を早めに把握したいため、<strong>現時点でのご意向で構いませんので、早めにご入力いただけると助かります。</strong><br>
+                            （最終確定は <strong>7月31日</strong> となります。）
+                        </p>
+                        <p class="rsvp-note">
+                            ※Googleアカウントにログインして入力いただけると期日までは内容の変更が可能です。
+                        </p>
+                        <a href="https://docs.google.com/forms/d/1seqLZdUY3kOmPBv27ehqIvEKFi8WKyZ6Fog0pNNRkSc/" target="_blank" class="btn rsvp-btn">
+                            <span class="btn-text">出欠入力フォームへ進む</span>
+                            <span class="btn-icon">▶︎</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQセクション -->
+            <section class="section faq-section">
+                <div class="container">
+                    <h2 class="section-title">よくあるご質問</h2>
+                    <div class="faq-list">
+                        <details class="faq-item">
+                            <summary>招待対象者は誰ですか？</summary>
+                            <div class="faq-answer">
+                                <p>卒業アルバムに載っている同級生を中心に、幹事が連絡を取れる範囲でお声掛けしています。もし卒業アルバムにはいなくても、途中で転校された方で連絡先をご存知の方がいらっしゃればぜひお声掛けをご協力お願いします！参加の旨は大歓迎です。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>このサイトを同級生に案内していいですか？</summary>
+                            <div class="faq-answer">
+                                <p>ぜひお願いします！1991年卒業の同級生であれば大歓迎です。案内する際は、ログインに必要な「合い言葉」も一緒に知らせてあげてください。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>服装に決まりはありますか？</summary>
+                            <div class="faq-answer">
+                                <p>平服（スマートカジュアルなど、ご自身がリラックスして楽しめる服装）でお気軽にお越しください。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>会費の支払い方法は？</summary>
+                            <div class="faq-answer">
+                                <p>当日の受付にて「現金」でお支払いください。釣銭のないようご準備いただけますと大変助かります。※クレジットカードや電子マネーは不可となります。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>車で行ってもいいですか？</summary>
+                            <div class="faq-answer">
+                                <p>はい、ホテルの駐車場に止めていただけます。ただし、お酒を飲まれる方の運転は固くお断りいたしますので、その場合は代行運転等をご利用ください。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>立食ですか？</summary>
+                            <div class="faq-answer">
+                                <p>全員分のお席をご用意し、着座での形式となりますが、コース料理ではなくビュッフェスタイルですので、自由に移動していただけます。ゆっくりとお食事と歓談をお楽しみください。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>席はどのようにして決まりますか？</summary>
+                            <div class="faq-answer">
+                                <p>最初は幹事側でランダムに決めさせていただきますが、乾杯以降は自由に席を移動してもらえるようにいたします。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>先生も参加されますか？</summary>
+                            <div class="faq-answer">
+                                <p>中1から中3までの担任の先生や、当時お世話になった先生方にお声掛けをしています。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>誰が来るのか知りたいです。</summary>
+                            <div class="faq-answer">
+                                <p>具体的な参加者名につきましては、個人情報の観点からお知らせしておりません。ただし、全体の参加予定人数につきましては、随時このサイトのトップにて公開してまいります。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>2次会に行くかはその場で決めたいのですが…</summary>
+                            <div class="faq-answer">
+                                <p>当日参加の場合でも参加できるように若干の余裕を見ておきますが、当日の人数状況によっては急遽の参加ができない場合があります。確実に参加したい場合は、予め「参加予定」として希望を出しておいてください。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>卒業以来連絡を取ってる人がいないので、一人ぼっちになりそうで心配です。</summary>
+                            <div class="faq-answer">
+                                <p>大丈夫！35年ぶりの再会ですので、誰もが同じように不安を少し抱えているはずです。当日はわかりやすい名札を用意するなど、話しやすい工夫を考えていますので、安心してお越しください。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>子どもを連れて行っていいですか？</summary>
+                            <div class="faq-answer">
+                                <p>申し訳ありませんが、会場の都合と、大人のみで当時を懐かしむ場とさせていただきたいため、お連れ様・お子様のご参加はご遠慮いただき、同窓生ご本人のみのご参加とさせていただきます。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>当日急に都合が悪くなったらどうしたらいいですか？</summary>
+                            <div class="faq-answer">
+                                <p>8月11日までにご連絡いただければ調整いたします。それ以降のキャンセルにつきましては、申し訳ありませんが後日会費をご請求させていただきます。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Googleアカウントってなんですか？</summary>
+                            <div class="faq-answer">
+                                <p>Googleが無料で提供しているサービス（Gmailなど）を利用するためのアカウントです。出欠フォームの入力間違いなどを後からご自身で修正できるようにするため、ログインをお願いしております。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Googleアカウントを持っていないのですが、一度入力したらもう変えられませんか？</summary>
+                            <div class="faq-answer">
+                                <p>アカウントをお持ちでない場合、ご自身での直接の修正はできなくなりますが、幹事へ直接ご連絡いただければこちらで内容を変更いたしますのでご安心ください。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>入力した個人情報はどのように扱われますか？</summary>
+                            <div class="faq-answer">
+                                <p>ご入力いただいた個人情報は厳重に管理し、今回の同窓会の出欠確認、および今後同様の同窓会が開かれる際のご連絡にのみ使用いたします。それ以外の目的で使用することはありません。</p>
+                            </div>
+                        </details>
+                        <details class="faq-item">
+                            <summary>本同窓会に関する問い合わせ窓口はありますか？</summary>
+                            <div class="faq-answer">
+                                <p>お問い合わせは以下のメールアドレスまでお願いいたします。<br>
+                                <a href="mailto:kodaniya@gmail.com" style="color:var(--primary-color); text-decoration:underline;">kodaniya@gmail.com</a> （幹事：吉川信幸）</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2026 石部中学校 1991年卒業生 同窓会 幹事一同</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

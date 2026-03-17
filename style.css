@@ -1,0 +1,733 @@
+/* リセットと基本設定 */
+/* フォント追加＆調整 */
+@import url('https://fonts.googleapis.com/css2?family=Yomogi&family=Yuji+Syuku&family=Montserrat:wght@700;800&family=Noto+Serif+JP:wght@500;700;900&display=swap');
+
+
+:root {
+    --primary-color: #b56a23; /* 少し落ち着いた高級感のあるオレンジ/ブラウン */
+    --secondary-color: #1a252f;
+    --bg-color: #faf9f6;
+    --text-color: #2c2c2c;
+    --light-text: #ffffff;
+    --font-heading: 'Noto Serif JP', serif;
+    --font-body: 'Noto Serif JP', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-heading {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+/* 画面切り替え用 */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* ログイン画面 */
+#login-screen {
+    background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 3rem 2.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    color: var(--light-text);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.login-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1em;
+}
+
+.login-subtitle {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.error-message {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    display: none; /* 初期非表示 */
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    font-family: var(--font-body);
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+.primary-btn:hover {
+    background-color: #b5651c;
+    transform: translateY(-2px);
+}
+
+/* メインコンテンツ - ヒーローセクション */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* パララックス効果 */
+    z-index: -2;
+    transform: scale(1.05); /* 少し拡大しておく */
+    animation: slowZoom 20s ease-out forwards;
+}
+
+@keyframes slowZoom {
+    0% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.3) 0%,
+        rgba(0,0,0,0.6) 100%
+    );
+    z-index: -1;
+}
+
+.hero-content {
+    animation: fadeIn 2s ease 1s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero-date {
+    font-size: 1.2rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    opacity: 0.9;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.8;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator span {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.arrow-down {
+    width: 1px;
+    height: 30px;
+    background-color: white;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+    40% { transform: translateY(-10px) translateX(-50%); }
+    60% { transform: translateY(-5px) translateX(-50%); }
+}
+
+/* 共通セクションスタイル */
+.section {
+    padding: 6rem 0;
+}
+
+.section:nth-child(even) {
+    background-color: #f5f2eb;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+/* メッセージセクション */
+.message-box {
+    background: white;
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--primary-color);
+}
+
+.greeting-lead {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.message-box p {
+    margin-bottom: 1.5rem;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 3rem;
+    font-style: italic;
+    color: var(--secondary-color);
+}
+
+/* 開催概要セクション */
+.event-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-left: 4px solid var(--secondary-color);
+}
+
+.event-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 0.5rem;
+}
+
+.event-details dt {
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.event-details dd {
+    margin-left: 0;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.map-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    text-decoration: underline;
+}
+
+/* 出欠セクション */
+.rsvp-box {
+    text-align: center;
+    background: var(--secondary-color);
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: 12px;
+}
+
+.rsvp-box .section-title {
+    color: white;
+}
+
+.rsvp-box .section-title::after {
+    background-color: var(--primary-color);
+}
+
+.rsvp-desc {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.rsvp-note {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 3rem;
+}
+
+.rsvp-btn {
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.2rem;
+    padding: 1rem 3rem;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(209, 122, 34, 0.4);
+}
+
+.rsvp-btn:hover {
+    background-color: white;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* FAQセクション */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.faq-item summary {
+    padding: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    background: white;
+    position: relative;
+    list-style: none; /* デフォルトの矢印を消す */
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: transform 0.3s;
+}
+
+.faq-item[open] summary::after {
+    content: '−';
+    transform: translateY(-50%);
+}
+
+.faq-answer {
+    padding: 0 1.5rem 1.5rem;
+    color: #666;
+    border-top: 1px solid #eee;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+}
+
+/* フッター */
+.footer {
+    background: #1a252f;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.9rem;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .section {
+        padding: 4rem 0;
+    }
+    
+    .message-box {
+        padding: 2rem 1.5rem;
+    }
+    
+    .event-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .rsvp-box {
+        padding: 3rem 1.5rem;
+    }
+}
+
+
+/* 追加のマップ・画像スタイル */
+.map-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.hotel-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+/* 追加のスタイル調整 */
+.hero-participants {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.9);
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    animation: fadeIn 2s ease 1.5s forwards;
+    opacity: 0;
+}
+
+.large-text {
+    font-size: 1.25rem;
+}
+
+/* マップと画像の幅を揃える（枠内に収める） */
+.map-container, .hotel-image {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+/* ハイセンスでモダンな調整 */
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700;800&family=Montserrat:wght@700;800&family=Noto+Serif+JP:wght@500;700;900&display=swap');
+
+
+:root {
+    --primary-color: #b56a23; /* 少し落ち着いた高級感のあるオレンジ/ブラウン */
+    --secondary-color: #1a252f;
+    --bg-color: #faf9f6;
+    --text-color: #2c2c2c;
+    /* より太く美しい明朝体を指定 */
+    --font-heading: 'Noto Serif JP', serif;
+    --font-body: 'Noto Serif JP', serif;
+}
+
+body {
+    font-family: var(--font-body);
+    font-weight: 500; /* ベースを少し太く */
+    letter-spacing: 0.03em;
+}
+
+h1, h2, h3, h4, .font-heading {
+    font-weight: 900; /* 見出しは一番太く */
+    letter-spacing: 0.08em;
+}
+
+/* ヒーロータイポグラフィの強化 */
+.hero-title {
+    font-weight: 900;
+    text-shadow: 2px 4px 12px rgba(0,0,0,0.6);
+}
+
+.hero-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+}
+
+/* イベント詳細のアイコンとスタイル */
+.event-details dt {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 900;
+    margin-top: 1.5rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.3rem;
+    color: var(--primary-color);
+}
+
+.icon {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+.event-details dd {
+    margin-top: 0.8rem;
+    line-height: 1.8;
+}
+
+.large-text {
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.time-details {
+    font-size: 1rem;
+    color: #666;
+}
+
+.small-text {
+    font-size: 0.9rem;
+    color: #777;
+    font-weight: 500;
+}
+
+/* 画像とマップの順序と余白調整 */
+.hotel-image {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.map-container {
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* メッセージボックス等の装飾リファイン */
+.message-box, .event-card, .faq-item {
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.section-title::after {
+    height: 3px;
+    width: 40px;
+}
+
+/* ヒーロータイトル（エモーショナルな明朝） */
+.hero-title {
+    font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-size: 3.5rem;
+    text-shadow: 2px 4px 12px rgba(0,0,0,0.6);
+    display: inline-block;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+/* 1文字ずつのアニメーション用クラス */
+.char-reveal {
+    opacity: 0;
+    display: inline-block;
+    transform: translateY(10px);
+    animation: textFadeIn 0.5s forwards;
+    /* transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1); */
+}
+
+@keyframes textFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ヒーローの日付フォントをわかりやすく強めに */
+.hero-date {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #ffd085; /* 少しゴールドっぽく目立たせる */
+    text-shadow: 1px 2px 6px rgba(0,0,0,0.8);
+    margin-bottom: 0.8rem;
+}
+
+/* ボタンのデコラティブなスタイリング */
+.rsvp-btn {
+    background: linear-gradient(135deg, #d17a22 0%, #a85a13 100%);
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 1.2rem 3rem;
+    border-radius: 40px;
+    box-shadow: 0 6px 20px rgba(209, 122, 34, 0.5);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.rsvp-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    animation: shine 4s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 200%; }
+    100% { left: 200%; }
+}
+
+.rsvp-btn:hover {
+    background: linear-gradient(135deg, #e68d30 0%, #b5651c 100%);
+    color: white;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(209, 122, 34, 0.6);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+.rsvp-btn:hover .btn-icon {
+    transform: translateX(5px);
+}
+
