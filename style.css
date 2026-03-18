@@ -78,6 +78,11 @@ a:hover {
     justify-content: center;
     align-items: center;
     z-index: 100;
+    position: fixed; /* 全画面固定にしてスクロールを完全に防ぐ */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
 }
 
 .login-container {
@@ -482,7 +487,7 @@ a:hover {
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 1.8rem;
+        font-size: 1.5rem; /* スマホで綺麗に収まるようにさらに小さく */
     }
     
     .section {

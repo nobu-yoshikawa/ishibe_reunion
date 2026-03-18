@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 // DOMからログイン画面を完全に消す（オプション）
                 loginScreen.style.display = 'none';
                 
+                mainContent.style.display = 'block';
+                // force reflow
+                void mainContent.offsetWidth;
+
                 mainContent.classList.remove('hidden');
                 mainContent.classList.add('active');
                 
