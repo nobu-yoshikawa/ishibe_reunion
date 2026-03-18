@@ -21,10 +21,17 @@
 
 body {
     font-family: var(--font-body);
+    font-weight: 500; /* ベースを少し太く */
+    letter-spacing: 0.03em;
     color: var(--text-color);
     background-color: var(--bg-color);
     line-height: 1.8;
     overflow-x: hidden;
+}
+
+body.login-active {
+    overflow: hidden;
+    height: 100vh;
 }
 
 h1, h2, h3, h4, .font-heading {
@@ -475,7 +482,7 @@ a:hover {
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
     }
     
     .section {

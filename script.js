@@ -32,6 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // スクロール位置を一番上にする
                 window.scrollTo(0, 0);
+                
+                // bodyのスクロールロックを解除
+                document.body.classList.remove('login-active');
 
                 // テキストの1文字ずつ表示アニメーション
                 const heroTitle = document.querySelector('.hero-title');
