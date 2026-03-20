@@ -486,6 +486,10 @@ a:hover {
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
+    .hero-bg {
+        background-attachment: scroll; /* スマホでのパララックスカクつき防止 */
+    }
+
     .hero-title {
         font-size: 1.5rem; /* スマホで綺麗に収まるようにさらに小さく */
     }
