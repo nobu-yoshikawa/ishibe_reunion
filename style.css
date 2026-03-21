@@ -747,3 +747,57 @@ h1, h2, h3, h4, .font-heading {
     transform: translateX(5px);
 }
 
+/* お知らせセクション */
+.news-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.news-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.news-list li {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px dashed #ddd;
+}
+
+.news-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.news-list li:first-child {
+    padding-top: 0;
+}
+
+.news-date {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-right: 1.5rem;
+    white-space: nowrap;
+    font-size: 0.95rem;
+}
+
+.news-text {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+@media (max-width: 500px) {
+    .news-list li {
+        flex-direction: column;
+    }
+    .news-date {
+        margin-bottom: 0.3rem;
+    }
+}
+
